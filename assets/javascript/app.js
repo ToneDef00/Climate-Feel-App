@@ -20,9 +20,11 @@ class UserSpecificClimateData {
         this.longitude;
         this.states = {
             CA: "04", CO: "05", AL: "01", AK: "50", AZ: "03", AR: "02", CT: '06', DE: "07", FL: "08", GE: "09", ID: "10",
-            IL: "11", IN: "12", IO: "13", KA: "14", KE: "15", MA: "19", MD: "18", ME: "17", MI: "20", GLOBAL: "111",NV:"26"
+            IL: "11", IN: "12", IO: "13", KA: "14", KE: "15", MA: "19", MD: "18", ME: "17", MI: "20", MN:'21',MS:"22", MO:"23",
+            MT:"24",NO:"25", NV:"26",NH:"27", NJ:"28", NM:"29",NY:"30",NC:"31",ND:"32", OH:"33",OK:"34",OR:"35", PA:"36", RI:'37',
+            SC:"38", SD:"39", TE:'40', TX:"41", UT:"42", VE:'43',VI:"44", WA:"45", WV:"46", WI:"47", WY:"48", GLOBAL: "111",
         }
-    }
+    }//16 and 49 are still missing
 
     async LoadNewGraphs(input){
         if(input === undefined){
