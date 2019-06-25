@@ -2,229 +2,271 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./assets/css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Climate Feel</title>
 
-  <title>Climate Feel App</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="./assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-  <!-- LINK TO FIREBASE GOES HERE -->
-  <!-- Firebase References -->
-  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
-
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-
-
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
 
 
 </head>
 
 <body>
-  <div class="container-fluid">
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <ul class="right hide-on-med-and-down">
+                <li><input class="" type="search" id="input" placeholder="Enter City or Zip-code"
+                        aria-label="EnterCity or Zip-code"></li>
+                <li><button class="" id="submit">Search</button></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#Graphs">Do Something</a></li>
+            </ul>
+            <a id="logo-container" href="#" class="brand-logo">Climate Feel</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#Graphs">The Data</a></li>
+            </ul>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand text-success" href="./index.html"><b>Climate Feel App</b></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Menu
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Weather</a>
-              <a class="dropdown-item" href="#">Maps</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Activities</a>
-            </div>
-          </li>
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="#DOsomething">DO Something</a></li>
+            </ul>
 
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" id="input" placeholder="Enter City or Zip-code"
-            aria-label="EnterCity or Zip-code">
-          <button class="btn btn-outline-success my-2 my-sm-0" id="submit">Search</button>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
-      </div>
     </nav>
-    <br>
 
-    <!-- Jumbotron -->
-    <div class="jumbotron">
-      <div class="weather-container valign-wrapper">
-        <img src="./assets/images/forestHeader.jpeg" width="960px" alt="Responsive image">
-        <h2 class="text-center">Climate Change, because you should <i>feel</i> it.</h2>
-        <p class="lead"> Please take some time to reflect upon the weather on your location, compare it with the weather
-          from 20 years ago, and notice/report any significant climate change over the years. We need Dramatic Action
-          Now if we
-          want to prevent the serious impact of climate change.</p>
-      </div>
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-2">Climate Feel </h1>
+                <div class="row center">
+                    <h2 class="header col s12 light">Climate Change, because you should <i>feel</i> it.</h2>
+                </div>
+                <div class="row center">
+                    <button> Learn more</button>
+                </div>
+                <br><br>
 
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card card-default">
-            <div class="card-header p-3 mb-2 bg-dark">
-              <h2 class="text-primary">Contact Us:</h2>
             </div>
-            <div class="card-body">
-              <!-- Sign-up Form (note the various input "types")-->
-              <form role="form">
-                <div class="form-group row">
-                  <label for="name-input">Name:</label>
-                  <input class="form-control" id="name-input" type="text">
-                </div>
-                <div class="form-group row">
-                  <label for="email-input">Email:</label>
-                  <input type="email" class="form-control" id="email-input" placeholder="Email">
-                </div>
-                <div class="form-group row">
-                  <label for="message-input">Message</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-              </form>
-            </div>
-          </div>
         </div>
-
-        <!-- Most Recent Member card -->
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card card-default">
-                <div class="card-header p-3 mb-2 bg-dark">
-                  <h2 class="text-primary" id='current-weather'>Current Weather </h2>
-                </div>
-                <div class="list-group">
-                  <p class="list-group-item list-group-item-action list-group-item-secondary" id="average">Average
-                    Temperature</p>
-                  <p class="list-group-item list-group-item-action list-group-item-danger" id="maximum">Maximum
-                    Temperature
-                  </p>
-                  <p class="list-group-item list-group-item-action list-group-item-info" id="minimum">Minimum
-                    Temperature
-                  </p>
-                  <p class="list-group-item list-group-item-action list-group-item-warning" id="humidity">Humidity</p>
-                  <p class="list-group-item list-group-item-action list-group-item-primary" id="pressure">Pressure</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </br>
-          </br>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card card-default">
-                <label for="report-input">Call to Action :
-                  <a href="https://www.arborday.org/takeaction/" target="_blank"><img
-                      src="https://www.arborday.org/images/logos/logo-arbor-day-foundation-color.png" width="100%"
-                      height="50"></a>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </br>
-      </br>
+        <div class="parallax"><img src="./assets/images/earthFromSpace.jpg" alt="Unsplashed background img 1"></div>
     </div>
 
-    <div class="jumbotron shadow rounded">
-        <div class="row">
-            <div class="col-sm-10">
-              <H3> As Deforestation and idustrialization continues our Ecosystem suffers</H3>
-              <p> Over the past 1000 years we have seen a dramatic rise of Co2 in our atmosphere. We can see that
-                recently Co2 levels are 30% higher than in recorded histroy. The rate at which our atmosphere is being
-                filled with Co2 is increasing as we cut down more trees and as more nations are industrializing.
-              </p>
-              <hr>
-              <p>On the graph below if you click on the temprature icon in the top left hand corner it will dsiplay global
-                temprature average</p>
+    <div class="container">
+        <div class="section">
+
+            <div class="row">
+                <div class="col s6 left">
+                    <h3><i class="mdi-content-send brown-text"></i></h3>
+                    <h4>Climate Science you can see</h4>
+                    <p class="left-align light">Please take some time to reflect upon the weather on your location,
+                        compare it with the weather
+                        from 20 years ago, and notice/report any significant climate change over the years. We need
+                        Dramatic Action
+                        Now if we want to prevent the serious impact of climate change.
+                    </p>
+                </div>
+                <div class="col s6 right">
+                    <div class="row">
+                        <div class="col s12">
+                            <h2 id='current-weather'>Current Weather </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p id="average">Temprature Average:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p id="maximum">Temprature Max:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p id="minimum">Temprature Min:</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12">
+                            <p id="humidity">humidity:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p id="pressure">pressure:</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-    
-          </div>
-      <div class="row">
-        <div class="col-sm-12">
-
-          <div id="co2-widget-container"></div>
-          <script type="text/javascript"
-            src="https://www.climatelevels.org/graphs/js/co2.php?theme=dark-unica&pid=2degreesinstitute"
-            style="height: 350px; width: 100%"></script>
 
         </div>
-      </div>
-    </div>
-    </hr>
-
-
-    <div class="jumbotron mt-5">
-      <div class="row">
-        <h4> Check out the weather in your state over the past 20 years</h4>
-        <p> The weather in is always changing and getting hotter and colder. Without a dataset that takes into account
-          the many years of weather you cant see a full picture. below we have a dataset for Temptraure average, compared to
-           the average of 20 years ago. We also have pecipication data for how much it rained this last year compared to 20 years ago.
-
-        </p>
-
-      </div>
-      </br>
-      <div class="row mt-5 ">
-        <div class="col-sm-6">
-          <div id="chartContainer" style="height: 350px; width: 100%"></div>
-        </div>
-        </br>
-        <div class="col-sm-6">
-          <div id="chartContainer1" style="height: 350px; width: 100%"></div>
-        </div>
-      </div>
-      </br>
-      <div class="row mt-5">
-        <div class="col-sm-6">
-          <div id="chartContainer2" style="height: 350px; width: 100%"></div>
-        </div>
-
-        <div class="col-sm-6">
-          <div id="chartContainer3" style="height: 350px; width: 100%"></div>
-        </div>
-      </div>
     </div>
 
-    <div class="card-footer text-muted">
-      <p class="text-center">&copy; Climate Feel App: Daniel, Badri, Deepesh</p>
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="./assets/images/forestHeader.jpeg" alt="Unsplashed background img 2"></div>
     </div>
-  </div>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-          
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s10 center">
+                    <H3> As Deforestation and idustrialization continues our Ecosystem suffers</H3>
+                    <p> Over the past 1000 years we have seen a dramatic rise of Co2 in our atmosphere. We can see that
+                        recently Co2 levels are 30% higher than in recorded histroy. The rate at which our atmosphere is
+                        being
+                        filled with Co2 is increasing as we cut down more trees and as more nations are industrializing.
+                    </p>
+                    <hr>
+                    <p>On the graph below if you click on the temprature icon in the top left hand corner it will
+                        dsiplay global
+                        temprature average</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center">
+                    <div id="co2-widget-container"></div>
+                    <script type="text/javascript"
+                        src="https://www.climatelevels.org/graphs/js/co2.php?theme=dark-unica&pid=2degreesinstitute"
+                        style="height: 350px; width: 100%"></script>
 
-  <script src="./assets/javascript/app.js"></script>
-  <!-- Script Tages for canvas JS -->
-  <!-- <script src="./assets/javascript/PushHistoricalData.js"></script> -->
-  <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h5 class="header col s12 light">An engineer with a passion for making</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="./assets/images/yellowstonefire.jpg" alt="Unsplashed background img 3"></div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <h4> Check out the weather in your state over the past 20 years</h4>
+                <p> The weather in is always changing and getting hotter and colder. Without a dataset that takes into
+                    account
+                    the many years of weather you cant see a full picture. below we have a dataset for Temptraure
+                    average, compared to
+                    the average of 20 years ago. We also have pecipication data for how much it rained this last year
+                    compared to 20 years ago.
+
+                </p>
+
+            </div>
+            <div class="row">
+                <div class="col s6 center">
+                    <div id="chartContainer" style="height: 350px; width: 100%"></div>
+                </div>
+                <div class="col s6 center">
+                    <div id="chartContainer1" style="height: 350px; width: 100%"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6 center">
+                    <div id="chartContainer2" style="height: 350px; width: 100%"></div>
+                </div>
+                <div class="col s6 center">
+                    <div id="chartContainer3" style="height: 350px; width: 100%"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h5 class="header col s12 light">As We Cut Down Trees
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="./assets/images/noTrees.webp"
+                alt="Unsplashed background img 2"></div>
+    </div>
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">About Climate feel Team</h5>
+                    <p class="grey-text text-lighten-4">Climate Feel App was made by Daniel, Badri, Deepesh for a UC berkely Coding project.
+                        It contains the culmination of our combined skills and work. We chose this project because we wanted to work on something we
+                        could all belive in. A project with real purpose which is educating people about the real impact of climat change.
+                    </p>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect on linkdin</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Daniels Linkdin</a></li>
+                        <li><a class="white-text" href="#!">Badri's Linkdin</a></li>
+                        <li><a class="white-text" href="#!">Deepesh's Linkdin</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">find us on Github</h5>
+                    <ul>
+                        <li><a class="white-text" href="https://github.com/ToneDef00">Daniels Github</a></li>
+                        <li><a class="white-text" href="https://github.com/badvasistha">Badri's Github</a></li>
+                        <li><a class="white-text" href="https://github.com/Depeace">Deepesh's Github</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Using <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="./assets/javascript/materialize.js"></script>
+    <script src="./assets/javascript/init.js"></script>
+
+    <script src="./assets/javascript/app.js"></script>
+    <!-- Script Tages for canvas JS -->
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 
 </body>
 

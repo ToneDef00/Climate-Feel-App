@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <title>Climate Feel App</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- LINK TO FIREBASE GOES HERE -->
+  <!-- Firebase References -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand text-success" href="./index.html"><b>Climate Feel App</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Weather</a>
+              <a class="dropdown-item" href="#">Maps</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Activities</a>
+            </div>
+          </li>
+
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" id="input" placeholder="Enter City or Zip-code"
+            aria-label="EnterCity or Zip-code">
+          <button class="btn btn-outline-success my-2 my-sm-0" id="submit">Search</button>
+        </div>
+      </div>
+    </nav>
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <div class="weather-container valign-wrapper">
+        <img src="./assets/images/forestHeader.jpeg" width="960px" alt="Responsive image">
+        <h2 class="text-center">Climate Change, because you should <i>feel</i> it.</h2>
+        <p class="lead"> Please take some time to reflect upon the weather on your location, compare it with the weather
+          from 20 years ago, and notice/report any significant climate change over the years. We need Dramatic Action
+          Now if we
+          want to prevent the serious impact of climate change.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card card-default">
+            <div class="card-header p-3 mb-2 bg-dark">
+              <h2 class="text-primary">Contact Us:</h2>
+            </div>
+            <div class="card-body">
+              <!-- Sign-up Form (note the various input "types")-->
+              <form role="form">
+                <div class="form-group row">
+                  <label for="name-input">Name:</label>
+                  <input class="form-control" id="name-input" type="text">
+                </div>
+                <div class="form-group row">
+                  <label for="email-input">Email:</label>
+                  <input type="email" class="form-control" id="email-input" placeholder="Email">
+                </div>
+                <div class="form-group row">
+                  <label for="message-input">Message</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Most Recent Member card -->
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card card-default">
+                <div class="card-header p-3 mb-2 bg-dark">
+                  <h2 class="text-primary" id='current-weather'>Current Weather </h2>
+                </div>
+                <div class="list-group">
+                  <p class="list-group-item list-group-item-action list-group-item-secondary" id="average">Average
+                    Temperature</p>
+                  <p class="list-group-item list-group-item-action list-group-item-danger" id="maximum">Maximum
+                    Temperature
+                  </p>
+                  <p class="list-group-item list-group-item-action list-group-item-info" id="minimum">Minimum
+                    Temperature
+                  </p>
+                  <p class="list-group-item list-group-item-action list-group-item-warning" id="humidity">Humidity</p>
+                  <p class="list-group-item list-group-item-action list-group-item-primary" id="pressure">Pressure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </br>
+          </br>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card card-default">
+                <label for="report-input">Call to Action :
+                  <a href="https://www.arborday.org/takeaction/" target="_blank"><img
+                      src="https://www.arborday.org/images/logos/logo-arbor-day-foundation-color.png" width="100%"
+                      height="50"></a>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      </br>
+    </div>
+
+    <div class="jumbotron shadow rounded">
+        <div class="row">
+            <div class="col-sm-10">
+              <H3> As Deforestation and idustrialization continues our Ecosystem suffers</H3>
+              <p> Over the past 1000 years we have seen a dramatic rise of Co2 in our atmosphere. We can see that
+                recently Co2 levels are 30% higher than in recorded histroy. The rate at which our atmosphere is being
+                filled with Co2 is increasing as we cut down more trees and as more nations are industrializing.
+              </p>
+              <hr>
+              <p>On the graph below if you click on the temprature icon in the top left hand corner it will dsiplay global
+                temprature average</p>
+            </div>
+    
+          </div>
+      <div class="row">
+        <div class="col-sm-12">
+
+          <div id="co2-widget-container"></div>
+          <script type="text/javascript"
+            src="https://www.climatelevels.org/graphs/js/co2.php?theme=dark-unica&pid=2degreesinstitute"
+            style="height: 350px; width: 100%"></script>
+
+        </div>
+      </div>
+    </div>
+    </hr>
+
+
+    <div class="jumbotron mt-5">
+      <div class="row">
+        <h4> Check out the weather in your state over the past 20 years</h4>
+        <p> The weather in is always changing and getting hotter and colder. Without a dataset that takes into account
+          the many years of weather you cant see a full picture. below we have a dataset for Temptraure average, compared to
+           the average of 20 years ago. We also have pecipication data for how much it rained this last year compared to 20 years ago.
+
+        </p>
+
+      </div>
+      </br>
+      <div class="row mt-5 ">
+        <div class="col-sm-6">
+          <div id="chartContainer" style="height: 350px; width: 100%"></div>
+        </div>
+        </br>
+        <div class="col-sm-6">
+          <div id="chartContainer1" style="height: 350px; width: 100%"></div>
+        </div>
+      </div>
+      </br>
+      <div class="row mt-5">
+        <div class="col-sm-6">
+          <div id="chartContainer2" style="height: 350px; width: 100%"></div>
+        </div>
+
+        <div class="col-sm-6">
+          <div id="chartContainer3" style="height: 350px; width: 100%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer text-muted">
+      <p class="text-center">&copy; Climate Feel App: Daniel, Badri, Deepesh</p>
+    </div>
+  </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+          
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="./assets/javascript/app.js"></script>
+  <!-- Script Tages for canvas JS -->
+  <!-- <script src="./assets/javascript/PushHistoricalData.js"></script> -->
+  <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+
+</body>
+
+</html>
